@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Page</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      height: 100vh;
+      background: linear-gradient(135deg, rgba(255, 0, 150, 0.8) 0%, rgba(255, 100, 255, 0.8) 25%, rgba(0, 255, 255, 0.8) 50%, rgba(0, 0, 255, 0.8) 75%, rgba(255, 0, 255, 0.8) 100%);
+      background-size: 400% 400%;
+      animation: gradientAnimation 5s ease infinite;
+      color: white;
+    }
+
+    /* Gradient Animation */
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      color: #00bcd4;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+    }
+
+    /* Scroll Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 5px;
+      background-color: #00bcd4;
+      z-index: 10000;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#section1">Section 1</a>
+    <a href="#section2">Section 2</a>
+    <a href="#section3">Section 3</a>
+  </nav>
+
+  <!-- Section 1 -->
+  <section id="section1" class="fade-in">
+    <h2>Welcome to Section 1</h2>
+    <p>This is an example of a scrolling section with smooth transitions and animations. Scroll down to see more!</p>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="section2" class="fade-in">
+    <h2>Section 2</h2>
+    <p>This section also fades in as you scroll. Enjoy the interactive experience!</p>
+  </section>
+
+  <!-- Section 3 -->
+  <section id="section3" class="fade-in">
+    <h2>Section 3</h2>
+    <p>As you scroll further, new sections will reveal themselves, enhancing the user experience.</p>
+  </section>
+
+  <script>
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollTop = window.scrollY;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+      document.querySelector('.progress-bar').style.width = `${scrollPercent}%`;
+
+      // Fade-in effect on scroll
+      const fadeInElements = document.querySelectorAll('.fade-in');
+      fadeInElements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (elementPosition < windowHeight) {
+          element.classList.add('visible');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

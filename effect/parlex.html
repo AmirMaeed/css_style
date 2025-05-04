@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Website with AOS Effects</title>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background-color: #f7f7f7;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  
+    h2{
+        text-align: center;
+    }
+
+
+
+    /* Navbar */
+    nav {
+      background-color: #333;
+      padding: 1rem 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 14px 20px;
+      display: inline-block;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #00b5e2;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Hero Section with Gradient Text */
+    .hero-section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff007f, #00b5e2);
+      color: white;
+      text-align: center;
+      margin-top: 60px; /* For the fixed navbar */
+    }
+
+    .gradient-text {
+      font-size: 4rem;
+      background: linear-gradient(135deg, #ff007f, #00b5e2);
+
+      -webkit-background-clip: text;
+      color: white;
+      font-weight: bold;
+      transition: all 0.5s ease;
+    }
+
+    .gradient-text:hover {
+        background: linear-gradient(135deg, #44e200, #ff0000);
+
+-webkit-background-clip: text;
+color:transparent;
+      
+      transform: scale(1.1);
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 50px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .box-shadow-section {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 50px;
+      max-width: 800px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .box-shadow-section:hover {
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+    }
+
+    /* About Section */
+    .about-section {
+      background-color: #f4f4f4;
+      padding: 50px 20px;
+    }
+
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+    }
+
+    /* Services Section */
+    .services-section {
+      background-color: #ffffff;
+      padding: 50px 20px;
+    }
+
+    .services-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      padding: 20px;
+      margin: 10px;
+      flex: 1;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .services-card:hover {
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background-color: #f7f7f7;
+      padding: 50px 20px;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .contact-form button {
+      background-color: #00b5e2;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #ff007f;
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      background-color: #ffffff;
+      padding: 50px 20px;
+    }
+
+    .pricing-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      padding: 30px;
+      margin: 10px;
+      flex: 1;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .pricing-card:hover {
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .pricing-card h3 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    .pricing-card p {
+      font-size: 1.2rem;
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      background-color: #f7f7f7;
+      padding: 50px 20px;
+    }
+
+    .testimonial {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .testimonial-author {
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #ff007f;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #00b5e2;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .gradient-text {
+        font-size: 3rem;
+      }
+
+      .about-content,
+      .services-card,
+      .pricing-card {
+        font-size: 1rem;
+      }
+
+      .services-card,
+      .pricing-card {
+        max-width: 100%;
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .custom-shape-divider-bottom-1746346714 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1746346714 svg {
+    position: relative;
+    display: block;
+    width: calc(238% + 1.3px);
+    height: 138px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1746346714 .shape-fill {
+    fill: #FFFFFF;
+}
+
+
+.custom-shap-divider-top-1746346809 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shap-divider-top-1746346809 svg {
+    position: relative;
+    display: block;
+    width: calc(238% + 1.3px);
+    height: 138px;
+    transform: rotateY(180deg);
+}
+
+.custom-shap-divider-top-1746346809 .shape-fill {
+    fill: #FFFFFF;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero-section" id="home" data-aos="fade-up">
+    <div class="custom-shape-divider-bottom-1746346714">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+    <div class="gradient-text">
+      Welcome to Our Professional Website
+   
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="about-section" id="about" data-aos="fade-up">
+    
+    <div class="about-content">
+      <h2>About Us</h2>
+      <p>
+        We are a team of passionate web designers and developers, creating beautiful and functional websites that deliver engaging user experiences. Our goal is to combine creativity with the latest technology to build websites that not only look great but also provide excellent performance.
+      </p>
+      <div class="custom-shap-divider-top-1746346809" style="z-index: -100;">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <div class="services-section" id="services" data-aos="fade-up">
+    <h2>Our Services</h2>
+    <div class="content">
+      <div class="services-card" data-aos="zoom-in">
+        <h3>Web Design</h3>
+        <p>We create custom designs that align with your brand and business goals.</p>
+      </div>
+      <div class="services-card" data-aos="zoom-in">
+        <h3>Web Development</h3>
+        <p>We develop fast, scalable websites and applications tailored to your needs.</p>
+      </div>
+      <div class="services-card" data-aos="zoom-in">
+        <h3>SEO Optimization</h3>
+        <p>We optimize your website to rank higher in search engines and drive traffic.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing Section -->
+  <div class="pricing-section" id="pricing" data-aos="fade-up">
+    <h2>Pricing Plans</h2>
+    <div class="content">
+      <div class="pricing-card" data-aos="zoom-in">
+        <h3>Basic Plan</h3>
+        <p>Get started with our basic package, perfect for small projects.</p>
+      </div>
+      <div class="pricing-card" data-aos="zoom-in">
+        <h3>Advanced Plan</h3>
+        <p>For larger projects that require additional features and customization.</p>
+      </div>
+      <div class="pricing-card" data-aos="zoom-in">
+        <h3>Enterprise Plan</h3>
+        <p>Comprehensive solutions for businesses looking to scale and grow.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="contact-section" id="contact" data-aos="fade-up">
+
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+
+      <form action="#">
+
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+    <div class="custom-shap-divider-top-1746346809" style="z-index: -1;">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+  </div>
+
+  <!-- Footer -->
+ 
+  <footer>
+    
+    <p>&copy; 2025 Our Professional Website | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+  
+</footer>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+</html>
